@@ -1,0 +1,75 @@
+aid: avenue-bank
+url: https://raw.githubusercontent.com/api-evangelist/avenue-bank/refs/heads/main/apis.yml
+name: Avenue Bank
+kind: company
+description: Avenue Bank Ltd (ABN 24 628 073 085, AFSL 520239) is an Australian
+  Authorised Deposit-taking Institution (ADI) regulated by APRA, holding a full
+  (unrestricted) banking licence granted in 2024 after operating as a Restricted
+  ADI from 2021. Founded by Dale Hurley and Colin Porter (co-founders of
+  CreditorWatch) and majority-backed by Sherman Ma's Liberty Financial Group as
+  its largest strategic shareholder, Avenue is a digital business bank that is
+  the first and only Australian bank specialising exclusively in bank guarantees
+  for SMEs, alongside term deposits. As an ADI, Avenue is a designated data
+  holder class under Australia's Consumer Data Right (CDR / Open Banking);
+  however, it is not currently listed in the CDR Register's banking data-holder
+  brands and publishes no public developer portal, so its unauthenticated
+  Product Reference Data (PRD) API surface is not yet live or confirmed.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Financial
+- Banks
+- Open Banking
+- CDR
+- Consumer Data Right
+- Consumer Banking
+- Business Banking
+- Bank Guarantees
+- Australia
+- ADI
+created: '2026-07-20'
+modified: '2026-07-20'
+specificationVersion: '0.19'
+apis:
+- aid: avenue-bank:avenue-bank-cdr-product-reference-data-api
+  name: Avenue Bank CDR Product Reference Data API
+  tags:
+  - CDR
+  - Open Banking
+  - Product Reference Data
+  - Banking
+  - Australia
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://consumerdatastandardsaustralia.github.io/standards/#get-products
+  baseURL: https://api.avenuebank.com.au/cds-au/v1/banking/products
+  properties:
+  - url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-products
+    type: Documentation
+  - url: https://consumerdatastandardsaustralia.github.io/standards/#get-products
+    type: APIReference
+  description: 'UNVERIFIED. The Consumer Data Right (CDR) Product Reference Data
+    (PRD) API is the public, unauthenticated banking-products endpoint that every
+    active Australian ADI data holder must expose under the standard CDS path
+    /cds-au/v1/banking/products. Avenue Bank is an ADI, but as of 2026-07-20 it
+    is not listed in the CDR Register''s banking data-holder brands, and a probe
+    of its API host (https://api.avenuebank.com.au/cds-au/v1/banking/products)
+    returned HTTP 403 Forbidden (a WAF response, not a CDS-conformant JSON
+    payload). The baseURL shown is the standard CDS path on Avenue''s real API
+    host; it is recorded as unverified, not a confirmed live endpoint. The
+    contract, when stood up, conforms to the shared DSB Consumer Data Standards
+    OpenAPI, not an Avenue-proprietary spec.'
+common:
+- type: Website
+  url: https://www.avenuebank.com.au/
+- type: Blog
+  url: https://www.avenuebank.com.au/news/
+- type: Support
+  url: https://www.avenuebank.com.au/help/
+- type: PrivacyPolicy
+  url: https://www.avenuebank.com.au/privacy
+- type: TermsOfService
+  url: https://www.avenuebank.com.au/legal/
+- type: LinkedIn
+  url: https://au.linkedin.com/company/avenuebank
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

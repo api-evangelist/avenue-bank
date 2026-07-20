@@ -1,0 +1,93 @@
+aid: avenue-bank
+name: Avenue Bank
+review:
+  question: Does Avenue Bank expose a live, public CDR Product Reference Data (PRD) API?
+  answer: false
+  date: '2026-07-20'
+  reviewer: API Evangelist
+  cdrPrdConfirmed: false
+  developerPortal: false
+  specProvenance: |
+    No Avenue-proprietary API specification exists. Australia's Consumer Data
+    Right PRD contract is defined by the shared DSB (Data Standards Body)
+    Consumer Data Standards OpenAPI (get-products). No bank-specific OpenAPI was
+    harvested because Avenue publishes none and exposes no confirmed endpoint;
+    bundling the generic DSB standard here would misleadingly imply a live
+    Avenue contract, so it was intentionally not committed.
+findings:
+  summary: |
+    Avenue Bank is an Australian ADI (ABN 24 628 073 085, AFSL 520239) holding a
+    full APRA banking licence, majority-backed by Liberty Financial Group, that
+    specialises exclusively in SME bank guarantees plus term deposits. Its public
+    web presence (avenuebank.com.au) contains no open banking, CDR, developer,
+    or API references, and there is no developer portal (developer.avenuebank.com.au
+    does not resolve). As an ADI, Avenue falls within the CDR banking data-holder
+    class and is obligated to expose an unauthenticated Product Reference Data
+    (PRD) API at the standard CDS path /cds-au/v1/banking/products. However, as
+    of the review date Avenue is NOT listed among the 119 banking data-holder
+    brands in the CDR Register (api.cdr.gov.au/cdr-register/v1/banking/data-holders/brands/summary),
+    consistent with a newer, narrowly-scoped ADI still inside its CDR phasing /
+    exemption window. A direct probe of the bank's API host at the standard CDS
+    path returned HTTP 403 Forbidden with body {"message":"Forbidden"} (an AWS
+    WAF/edge response), NOT a CDS-conformant 200 with a data.products array and
+    x-v header. No live PRD endpoint could therefore be confirmed.
+  authModel: |
+    CDR PRD (product) endpoints are public and unauthenticated by standard. CDR
+    consumer-data (authenticated) endpoints, if/when Avenue onboards as a data
+    holder, would use the CDR security profile: OAuth2 / OpenID Connect with
+    FAPI (Financial-grade API) hardening and the Accredited Data Recipient (ADR)
+    consent model mandated by the DSB Consumer Data Standards. None of this is
+    currently exposed by Avenue.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.avenuebank.com.au/cds-au/v1/banking/products
+      documented: false
+      verified: false
+      note: >-
+        Standard CDS PRD path on Avenue's real API host. Probe returned HTTP 403
+        Forbidden (WAF), not a CDS JSON payload. Recorded as unverified; not a
+        confirmed live endpoint.
+  probes:
+    - url: https://api.avenuebank.com.au/cds-au/v1/banking/products
+      method: GET
+      headers: 'x-v: 3'
+      httpStatus: 403
+      body: '{"message":"Forbidden"}'
+      note: WAF/edge forbidden response; no CDS data.products array, no x-v response header.
+    - url: https://api.cdr.gov.au/cdr-register/v1/banking/data-holders/brands/summary
+      method: GET
+      httpStatus: 200
+      note: >-
+        Authoritative CDR Register returned 119 banking data-holder brands; no
+        entry matches Avenue Bank (brandName or publicBaseUri). Avenue is not a
+        registered banking data holder as of 2026-07-20.
+    - url: https://developer.avenuebank.com.au/
+      method: GET
+      httpStatus: 000
+      note: Does not resolve. No developer portal.
+    - url: https://www.avenuebank.com.au/
+      method: GET
+      httpStatus: 200
+      note: Corporate/product site (Webflow). No open banking, CDR, developer, or API content.
+sources:
+  - url: https://www.avenuebank.com.au/
+    type: Website
+    note: Confirms bank-guarantee specialisation, ADI status, ABN/AFSL, Liberty backing; no API content.
+  - url: https://www.apra.gov.au/news-and-publications/apra-amends-authorised-deposit-taking-institution-licence-for-avenue-bank-to
+    type: News
+    note: APRA removes restrictions - Avenue granted full (unrestricted) ADI licence.
+  - url: https://api.cdr.gov.au/cdr-register/v1/banking/data-holders/brands/summary
+    type: APIReference
+    note: CDR Register banking data-holder brands summary; Avenue Bank absent from 119 brands.
+  - url: https://consumerdatastandardsaustralia.github.io/standards/#get-products
+    type: Documentation
+    note: DSB Consumer Data Standards get-products (PRD) - the shared standard Avenue would conform to.
+actions:
+  openapiHarvested: false
+  reason: |
+    No Avenue-proprietary OpenAPI exists and no live PRD endpoint could be
+    confirmed. Only the shared DSB CDS standard spec is publicly available;
+    committing it into this repo would falsely imply an Avenue-operated contract,
+    so it was not harvested. Revisit once Avenue appears in the CDR Register with
+    a live publicBaseUri returning a CDS-conformant 200.

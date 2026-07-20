@@ -1,0 +1,27 @@
+# Avenue Bank
+
+> Avenue Bank Ltd (ABN 24 628 073 085, AFSL 520239) is an Australian Authorised Deposit-taking Institution (ADI) regulated by APRA, holding a full unrestricted banking licence granted in 2024. Founded by Dale Hurley and Colin Porter (co-founders of CreditorWatch) and majority-backed by Sherman Ma's Liberty Financial Group, Avenue is a digital business bank specialising exclusively in bank guarantees for SMEs, alongside term deposits. As an ADI it is a designated data holder under Australia's Consumer Data Right (CDR / Open Banking), though it publishes no public developer portal and its unauthenticated Product Reference Data (PRD) API surface is not yet confirmed live.
+
+## APIs
+
+- [Avenue Bank CDR Product Reference Data API](https://consumerdatastandardsaustralia.github.io/standards/#get-products): UNVERIFIED. The standard CDR Product Reference Data (PRD) endpoint every active Australian ADI data holder must expose at /cds-au/v1/banking/products. Avenue's API host (https://api.avenuebank.com.au/cds-au/v1/banking/products) returned HTTP 403 (WAF) as of 2026-07-20 and Avenue is not yet listed in the CDR Register's banking data-holder brands. When stood up, the contract conforms to the shared DSB Consumer Data Standards OpenAPI, not an Avenue-proprietary spec.
+
+## Docs
+
+- [Consumer Data Standards (Australia) — Get Products](https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-products): The shared DSB banking standard the PRD API conforms to.
+- [Help / Support](https://www.avenuebank.com.au/help/): Avenue Bank customer help centre.
+- [News](https://www.avenuebank.com.au/news/): Avenue Bank news and announcements.
+
+## Company
+
+- [Website](https://www.avenuebank.com.au/): Avenue Bank corporate site.
+- [About](https://www.avenuebank.com.au/about/): Company background, licence and leadership.
+- [Apply / Sign Up](https://application.avenuebank.com.au): Online application for Avenue Bank products.
+- [Privacy Policy](https://www.avenuebank.com.au/privacy): Privacy policy.
+- [Legal / Terms](https://www.avenuebank.com.au/legal/): Legal and terms of service.
+- [LinkedIn](https://au.linkedin.com/company/avenuebank): Company LinkedIn profile.
+
+## Notes
+
+- Provenance: generated from the API Evangelist catalog (apis.yml) for avenue-bank on 2026-07-20; method: generated. No provider-published /llms.txt exists — the docs host serves a SPA HTML shell for all paths.
+- Avenue Bank publishes no public developer portal, SDKs, MCP server, or agent-facing artifacts as of this writing.

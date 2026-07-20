@@ -58,6 +58,8 @@ apis:
     contract, when stood up, conforms to the shared DSB Consumer Data Standards
     OpenAPI, not an Avenue-proprietary spec.'
 common:
+- type: DomainSecurity
+  url: security/avenue-bank-domain-security.yml
 - type: Website
   url: https://www.avenuebank.com.au/
 - type: Blog
@@ -70,6 +72,12 @@ common:
   url: https://www.avenuebank.com.au/legal/
 - type: LinkedIn
   url: https://au.linkedin.com/company/avenuebank
+- type: SignUp
+  url: https://application.avenuebank.com.au
+- type: DomainSecurity
+  url: security/avenue-bank-domain-security.yml
+- type: LLMsTxt
+  url: llms/avenue-bank-llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

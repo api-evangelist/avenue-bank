@@ -10,10 +10,15 @@ description: Avenue Bank Ltd (ABN 24 628 073 085, AFSL 520239) is an Australian
   its largest strategic shareholder, Avenue is a digital business bank that is
   the first and only Australian bank specialising exclusively in bank guarantees
   for SMEs, alongside term deposits. As an ADI, Avenue is a designated data
-  holder class under Australia's Consumer Data Right (CDR / Open Banking);
-  however, it is not currently listed in the CDR Register's banking data-holder
-  brands and publishes no public developer portal, so its unauthenticated
-  Product Reference Data (PRD) API surface is not yet live or confirmed.
+  holder class under Australia's Consumer Data Right (CDR / Open Banking) and is
+  therefore subject to the shared Data Standards Body (DSB) Consumer Data
+  Standards Banking API surface (Get Products through Get Payees) that every ADI
+  data holder implements verbatim under the /cds-au/v1 path. Avenue holds a
+  permanent ACCC exemption (granted 6 June 2025, s56GD) covering the term-deposit
+  aspect of its bank guarantee product, publishes no first-party developer portal,
+  and a probe of its API host on 2026-07-21 returned HTTP 403 (WAF) rather than a
+  CDS-conformant payload, so its live CDR data-holder surface is documented here
+  against the standard but recorded as unverified.
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
 - Financial
@@ -27,7 +32,7 @@ tags:
 - Australia
 - ADI
 created: '2026-07-20'
-modified: '2026-07-20'
+modified: '2026-07-21'
 specificationVersion: '0.19'
 apis:
 - aid: avenue-bank:avenue-bank-cdr-product-reference-data-api
@@ -42,21 +47,131 @@ apis:
   humanURL: https://consumerdatastandardsaustralia.github.io/standards/#get-products
   baseURL: https://api.avenuebank.com.au/cds-au/v1/banking/products
   properties:
+  - url: https://raw.githubusercontent.com/api-evangelist/avenue-bank/refs/heads/main/openapi/avenue-bank-cds-banking-openapi.json
+    type: OpenAPI
   - url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-products
     type: Documentation
   - url: https://consumerdatastandardsaustralia.github.io/standards/#get-products
     type: APIReference
-  description: 'UNVERIFIED. The Consumer Data Right (CDR) Product Reference Data
-    (PRD) API is the public, unauthenticated banking-products endpoint that every
-    active Australian ADI data holder must expose under the standard CDS path
-    /cds-au/v1/banking/products. Avenue Bank is an ADI, but as of 2026-07-20 it
-    is not listed in the CDR Register''s banking data-holder brands, and a probe
-    of its API host (https://api.avenuebank.com.au/cds-au/v1/banking/products)
-    returned HTTP 403 Forbidden (a WAF response, not a CDS-conformant JSON
-    payload). The baseURL shown is the standard CDS path on Avenue''s real API
-    host; it is recorded as unverified, not a confirmed live endpoint. The
-    contract, when stood up, conforms to the shared DSB Consumer Data Standards
-    OpenAPI, not an Avenue-proprietary spec.'
+  description: 'PUBLIC / unauthenticated. The Product Reference Data (PRD) family
+    (Get Products, Get Product Detail) is the openly accessible banking-products
+    surface every active Australian ADI data holder exposes under the standard CDS
+    path /cds-au/v1/banking/products. It is defined by the shared DSB Consumer Data
+    Standards Banking API v1.36.0 (see the wired OpenAPI), not an Avenue-proprietary
+    spec. Avenue is an ADI subject to this obligation but holds a permanent ACCC
+    exemption (6 June 2025) for the term-deposit aspect of its bank guarantee
+    product; a probe of https://api.avenuebank.com.au/cds-au/v1/banking/products on
+    2026-07-21 returned HTTP 403 (WAF), so the endpoint host is real but its live
+    CDR-conformant status is recorded as unverified.'
+- aid: avenue-bank:avenue-bank-cdr-accounts-balances-api
+  name: Avenue Bank CDR Accounts & Balances API
+  tags:
+  - CDR
+  - Open Banking
+  - Accounts
+  - Balances
+  - Banking
+  - Australia
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://consumerdatastandardsaustralia.github.io/standards/#get-accounts
+  baseURL: https://api.avenuebank.com.au/cds-au/v1/banking/accounts
+  properties:
+  - url: https://raw.githubusercontent.com/api-evangelist/avenue-bank/refs/heads/main/openapi/avenue-bank-cds-banking-openapi.json
+    type: OpenAPI
+  - url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-accounts
+    type: Documentation
+  - url: https://consumerdatastandardsaustralia.github.io/standards/#get-accounts
+    type: APIReference
+  description: 'CONSUMER-AUTHORIZED (CDR ADR model). The Accounts & Balances family
+    (Get Accounts, Get Bulk Balances, Get Balances For Specific Accounts, Get
+    Account Balance, Get Account Detail) returns a consented consumer''s account
+    list and balances, accessible only to an Accredited Data Recipient after the
+    customer authorises sharing. These are standardized DSB Consumer Data Standards
+    Banking API v1.36.0 endpoints under /cds-au/v1/banking/accounts (see the wired
+    OpenAPI), not Avenue-proprietary endpoints. Avenue is an ADI subject to this
+    surface; its live registered data-holder status is unverified (products host
+    returned HTTP 403 WAF on 2026-07-21).'
+- aid: avenue-bank:avenue-bank-cdr-transactions-api
+  name: Avenue Bank CDR Transactions API
+  tags:
+  - CDR
+  - Open Banking
+  - Transactions
+  - Banking
+  - Australia
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://consumerdatastandardsaustralia.github.io/standards/#get-transactions-for-account
+  baseURL: https://api.avenuebank.com.au/cds-au/v1/banking/accounts/{accountId}/transactions
+  properties:
+  - url: https://raw.githubusercontent.com/api-evangelist/avenue-bank/refs/heads/main/openapi/avenue-bank-cds-banking-openapi.json
+    type: OpenAPI
+  - url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-transactions-for-account
+    type: Documentation
+  - url: https://consumerdatastandardsaustralia.github.io/standards/#get-transactions-for-account
+    type: APIReference
+  description: 'CONSUMER-AUTHORIZED (CDR ADR model). The Transactions family (Get
+    Transactions For Account, Get Transaction Detail) returns a consented
+    consumer''s transaction history and detail, available only to an Accredited
+    Data Recipient after customer authorisation. These are standardized DSB Consumer
+    Data Standards Banking API v1.36.0 endpoints under
+    /cds-au/v1/banking/accounts/{accountId}/transactions (see the wired OpenAPI),
+    not Avenue-proprietary. Avenue is an ADI subject to this surface; live status
+    unverified (products host returned HTTP 403 WAF on 2026-07-21).'
+- aid: avenue-bank:avenue-bank-cdr-direct-debits-scheduled-payments-api
+  name: Avenue Bank CDR Direct Debits & Scheduled Payments API
+  tags:
+  - CDR
+  - Open Banking
+  - Direct Debits
+  - Scheduled Payments
+  - Banking
+  - Australia
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://consumerdatastandardsaustralia.github.io/standards/#get-direct-debits-for-account
+  baseURL: https://api.avenuebank.com.au/cds-au/v1/banking/accounts/direct-debits
+  properties:
+  - url: https://raw.githubusercontent.com/api-evangelist/avenue-bank/refs/heads/main/openapi/avenue-bank-cds-banking-openapi.json
+    type: OpenAPI
+  - url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-direct-debits-for-account
+    type: Documentation
+  - url: https://consumerdatastandardsaustralia.github.io/standards/#get-direct-debits-for-account
+    type: APIReference
+  description: 'CONSUMER-AUTHORIZED (CDR ADR model). This family covers the DSB
+    Banking API''s recurring-payment surface: Get Direct Debits For Account, Get
+    Bulk Direct Debits, Get Direct Debits For Specific Accounts, plus Get Scheduled
+    Payments For Account / Bulk / Specific Accounts and the Get Instalment Plans
+    endpoints. It returns a consented consumer''s direct-debit authorisations and
+    scheduled/instalment payments to an Accredited Data Recipient after
+    authorisation. Standardized DSB Consumer Data Standards Banking API v1.36.0
+    endpoints under /cds-au/v1/banking/accounts/direct-debits and
+    /cds-au/v1/banking/payments/scheduled (see the wired OpenAPI), not
+    Avenue-proprietary. Avenue is an ADI subject to this surface; live status
+    unverified (products host returned HTTP 403 WAF on 2026-07-21).'
+- aid: avenue-bank:avenue-bank-cdr-payees-api
+  name: Avenue Bank CDR Payees API
+  tags:
+  - CDR
+  - Open Banking
+  - Payees
+  - Banking
+  - Australia
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://consumerdatastandardsaustralia.github.io/standards/#get-payees
+  baseURL: https://api.avenuebank.com.au/cds-au/v1/banking/payees
+  properties:
+  - url: https://raw.githubusercontent.com/api-evangelist/avenue-bank/refs/heads/main/openapi/avenue-bank-cds-banking-openapi.json
+    type: OpenAPI
+  - url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-payees
+    type: Documentation
+  - url: https://consumerdatastandardsaustralia.github.io/standards/#get-payees
+    type: APIReference
+  description: 'CONSUMER-AUTHORIZED (CDR ADR model). The Payees family (Get Payees,
+    Get Payee Detail) returns a consented consumer''s saved payees, available only
+    to an Accredited Data Recipient after customer authorisation. These are
+    standardized DSB Consumer Data Standards Banking API v1.36.0 endpoints under
+    /cds-au/v1/banking/payees (see the wired OpenAPI), not Avenue-proprietary.
+    Avenue is an ADI subject to this surface; live registered data-holder status is
+    unverified (products host returned HTTP 403 WAF on 2026-07-21).'
 common:
 - type: DomainSecurity
   url: security/avenue-bank-domain-security.yml
@@ -74,8 +189,6 @@ common:
   url: https://au.linkedin.com/company/avenuebank
 - type: SignUp
   url: https://application.avenuebank.com.au
-- type: DomainSecurity
-  url: security/avenue-bank-domain-security.yml
 - type: LLMsTxt
   url: llms/avenue-bank-llms.txt
 maintainers:

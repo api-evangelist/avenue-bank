@@ -1,0 +1,226 @@
+generated: '2026-07-21'
+method: searched
+source: openapi/avenue-bank-cds-banking-openapi.json
+description: Recommended x-agentic-access execution contracts for the Consumer Data Standards Banking
+  API surface. Every operation in this surface is a read (the POST 'For Specific Accounts' operations
+  pass an account-id list in the request body but change no state), so all are classified connected/read.
+  Products (PRD) operations are public/unauthenticated (subject optional); all other families require
+  a consented consumer subject under the CDR ADR model. A governance starting point — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 19
+  by_action_class:
+    connected: 19
+  by_consequence:
+    read: 19
+  human_in_the_loop_required: 0
+operations:
+- path: /banking/accounts
+  method: get
+  operationId: listBankingAccounts
+  summary: Get Accounts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: required
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /banking/accounts/balances
+  method: get
+  operationId: listBankingBalancesBulk
+  summary: Get Bulk Balances
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: required
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /banking/accounts/balances
+  method: post
+  operationId: listBankingBalancesSpecificAccounts
+  summary: Get Balances For Specific Accounts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: required
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /banking/accounts/{accountId}/balance
+  method: get
+  operationId: getBankingBalance
+  summary: Get Account Balance
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: required
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /banking/accounts/{accountId}
+  method: get
+  operationId: getBankingAccountDetail
+  summary: Get Account Detail
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: required
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /banking/accounts/{accountId}/transactions
+  method: get
+  operationId: listBankingTransactions
+  summary: Get Transactions For Account
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: required
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /banking/accounts/{accountId}/transactions/{transactionId}
+  method: get
+  operationId: getBankingTransactionDetail
+  summary: Get Transaction Detail
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: required
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /banking/accounts/{accountId}/direct-debits
+  method: get
+  operationId: listDirectDebits
+  summary: Get Direct Debits For Account
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: required
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /banking/accounts/direct-debits
+  method: get
+  operationId: listDirectDebitsBulk
+  summary: Get Bulk Direct Debits
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: required
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /banking/accounts/direct-debits
+  method: post
+  operationId: listDirectDebitsSpecificAccounts
+  summary: Get Direct Debits For Specific Accounts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: required
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /banking/accounts/{accountId}/payments/scheduled
+  method: get
+  operationId: listScheduledPayments
+  summary: Get Scheduled Payments for Account
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: required
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /banking/payments/scheduled
+  method: get
+  operationId: listScheduledPaymentsBulk
+  summary: Get Scheduled Payments Bulk
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: required
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /banking/payments/scheduled
+  method: post
+  operationId: listScheduledPaymentsSpecificAccounts
+  summary: Get Scheduled Payments For Specific Accounts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: required
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /banking/accounts/{accountId}/payments/plans
+  method: get
+  operationId: listInstalmentPlans
+  summary: Get Instalment Plans for Account
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: required
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /banking/accounts/payments/plans
+  method: get
+  operationId: listInstalmentPlansBulk
+  summary: Get Instalment Plans Bulk
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: required
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /banking/payees
+  method: get
+  operationId: listBankingPayees
+  summary: Get Payees
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: required
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /banking/payees/{payeeId}
+  method: get
+  operationId: getBankingPayeeDetail
+  summary: Get Payee Detail
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: required
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /banking/products
+  method: get
+  operationId: listBankingProducts
+  summary: Get Products
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /banking/products/{productId}
+  method: get
+  operationId: getBankingProductDetail
+  summary: Get Product Detail
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none

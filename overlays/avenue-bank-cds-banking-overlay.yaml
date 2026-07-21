@@ -1,0 +1,17 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Avenue Bank CDS Banking API
+  version: 1.0.0
+extends: openapi/avenue-bank-cds-banking-openapi.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: avenue-bank
+    x-apievangelist-note: Shared DSB Consumer Data Standards Banking API v1.36.0 as implemented (obligated)
+      by Avenue Bank, an Australian ADI. Live host returned HTTP 403 (WAF) on 2026-07-21; status unverified.
+    x-cdr-standard-version: 1.36.0
+    x-cdr-data-holder-status: unverified
+- target: $.servers
+  update:
+  - url: https://api.avenuebank.com.au/cds-au/v1
+    description: Avenue Bank CDR data-holder base (unverified; HTTP 403 WAF on probe)

@@ -1,0 +1,21 @@
+generated: '2026-07-21'
+method: generated
+source: openapi/avenue-bank-cds-banking-openapi.json
+note: >-
+  Agent Skills generated from the shared DSB Consumer Data Standards Banking API
+  operations Avenue Bank (an Australian ADI) is obligated to expose. Every operationId
+  is verified present in the OpenAPI. Live data-holder status is unverified (API host
+  returned HTTP 403 WAF on 2026-07-21).
+skills:
+  - file: avenue-bank-product-reference.md
+    name: List Avenue Bank products (public CDR PRD)
+    api: openapi/avenue-bank-cds-banking-openapi.json
+    operations: [listBankingProducts, getBankingProductDetail]
+  - file: avenue-bank-accounts-and-balances.md
+    name: Read consented accounts and balances
+    api: openapi/avenue-bank-cds-banking-openapi.json
+    operations: [listBankingAccounts, getBankingAccountDetail, getBankingBalance, listBankingBalancesBulk, listBankingBalancesSpecificAccounts]
+  - file: avenue-bank-transactions.md
+    name: Retrieve consented account transactions
+    api: openapi/avenue-bank-cds-banking-openapi.json
+    operations: [listBankingTransactions, getBankingTransactionDetail]

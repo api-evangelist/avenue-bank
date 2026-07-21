@@ -1,0 +1,33 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/avenue-bank-cds-banking-openapi.json
+note: Cross-cutting standards conformance derived from the CDS Banking OpenAPI. Live host status unverified
+  (HTTP 403 WAF, 2026-07-21).
+standards:
+- id: cdr-banking
+  conforms: true
+  evidence: Implements the shared DSB Consumer Data Standards Banking API v1.36.0 under /cds-au/v1/banking.
+- id: consumer-data-right
+  conforms: true
+  evidence: Avenue is an APRA-regulated ADI in the CDR banking data-holder class.
+- id: oauth2
+  conforms: null
+  evidence: Not declared in the harvested spec; the CDR security profile mandates OAuth2 for consumer
+    data (see authentication/). Live surface unverified.
+- id: openid-connect
+  conforms: null
+  evidence: Mandated by the CDR security profile for consumer authorisation; not verifiable in the bare
+    spec.
+- id: fapi-1-advanced
+  conforms: null
+  evidence: CDR security profile is based on FAPI 1.0 Advanced (PAR, private_key_jwt, MTLS-bound tokens);
+    not verifiable in the bare spec.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use the CDR ErrorV2 URN envelope (ResponseErrorListV2), not application/problem+json.
+- id: pagination
+  conforms: true
+  evidence: page / page-size params with meta.totalRecords/totalPages and RFC-style links (self/first/prev/next/last).
+- id: idempotency
+  conforms: false
+  evidence: Read-only surface; no Idempotency-Key contract.

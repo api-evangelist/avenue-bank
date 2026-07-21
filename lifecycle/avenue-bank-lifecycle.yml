@@ -1,0 +1,21 @@
+generated: '2026-07-21'
+method: searched
+source: https://consumerdatastandardsaustralia.github.io/standards/#versioning
+note: Versioning/lifecycle governed by the DSB Consumer Data Standards, not by an Avenue-proprietary policy.
+  Avenue publishes no first-party developer status page or deprecation policy.
+versioning:
+  scheme: header
+  request: x-v (requested version) + x-min-v (minimum acceptable)
+  response: x-v (version served)
+  standard: Consumer Data Standards Banking API
+  standard_version: 1.36.0
+  docs: https://consumerdatastandardsaustralia.github.io/standards/#versioning
+deprecation:
+  mechanism: DSB Future Dated Obligations + endpoint version retirement (x-min-v floor).
+  sunset_header: false
+  policy_url: https://consumerdatastandardsaustralia.github.io/standards/#versioning
+  note: Deprecation is managed by the DSB standards release cycle, not by Avenue directly.
+sla:
+  note: CDR performance/availability obligations apply to data holders; no Avenue-published SLA URL.
+status_page: null
+deprecated_operations: []

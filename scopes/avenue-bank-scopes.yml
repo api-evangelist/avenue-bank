@@ -1,0 +1,48 @@
+generated: '2026-07-21'
+method: searched
+source: openapi/avenue-bank-cds-banking-openapi.json
+docs: https://consumerdatastandardsaustralia.github.io/standards/#authorisation-scopes
+note: The harvested OpenAPI does not enumerate oauth2 scopes (bare DSB banking contract). These are the
+  standardized CDR banking authorisation scopes the endpoints require per the Consumer Data Standards,
+  mapped to the operations in this repo. Product Reference Data endpoints are public and require no scope.
+  Live status unverified (API host returned HTTP 403 WAF on 2026-07-21).
+schemes:
+- name: cdr-oauth2
+  source: openapi/avenue-bank-cds-banking-openapi.json
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://consumerdatastandardsaustralia.github.io/standards/#security-profile
+    tokenUrl: https://consumerdatastandardsaustralia.github.io/standards/#security-profile
+scopes:
+- scope: bank:accounts.basic:read
+  description: Account name, type, balance and masked account number.
+  operations:
+  - listBankingAccounts
+  - getBankingBalance
+  - listBankingBalancesBulk
+  - listBankingBalancesSpecificAccounts
+- scope: bank:accounts.detail:read
+  description: Account numbers and full account details.
+  operations:
+  - getBankingAccountDetail
+- scope: bank:transactions:read
+  description: Transactions on an account.
+  operations:
+  - listBankingTransactions
+  - getBankingTransactionDetail
+- scope: bank:payees:read
+  description: Saved payees.
+  operations:
+  - listBankingPayees
+  - getBankingPayeeDetail
+- scope: bank:regular_payments:read
+  description: Direct debits, scheduled payments and instalment plans.
+  operations:
+  - listDirectDebits
+  - listDirectDebitsBulk
+  - listDirectDebitsSpecificAccounts
+  - listScheduledPayments
+  - listScheduledPaymentsBulk
+  - listScheduledPaymentsSpecificAccounts
+  - listInstalmentPlans
+  - listInstalmentPlansBulk

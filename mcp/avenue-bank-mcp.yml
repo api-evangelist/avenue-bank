@@ -1,0 +1,68 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: openapi/avenue-bank-cds-banking-openapi.json
+note: Candidate MCP tool surface derived from the CDS Banking OpenAPI operations. Avenue publishes no
+  hosted/remote MCP server, and the live API host returns HTTP 403 (WAF); this is a derived candidate
+  only.
+server:
+  name: avenue-bank
+  transport: http
+tools:
+- name: listBankingAccounts
+  description: Get Accounts
+  source_operation: openapi/avenue-bank-cds-banking-openapi.json#listBankingAccounts
+- name: listBankingBalancesBulk
+  description: Get Bulk Balances
+  source_operation: openapi/avenue-bank-cds-banking-openapi.json#listBankingBalancesBulk
+- name: listBankingBalancesSpecificAccounts
+  description: Get Balances For Specific Accounts
+  source_operation: openapi/avenue-bank-cds-banking-openapi.json#listBankingBalancesSpecificAccounts
+- name: getBankingBalance
+  description: Get Account Balance
+  source_operation: openapi/avenue-bank-cds-banking-openapi.json#getBankingBalance
+- name: getBankingAccountDetail
+  description: Get Account Detail
+  source_operation: openapi/avenue-bank-cds-banking-openapi.json#getBankingAccountDetail
+- name: listBankingTransactions
+  description: Get Transactions For Account
+  source_operation: openapi/avenue-bank-cds-banking-openapi.json#listBankingTransactions
+- name: getBankingTransactionDetail
+  description: Get Transaction Detail
+  source_operation: openapi/avenue-bank-cds-banking-openapi.json#getBankingTransactionDetail
+- name: listDirectDebits
+  description: Get Direct Debits For Account
+  source_operation: openapi/avenue-bank-cds-banking-openapi.json#listDirectDebits
+- name: listDirectDebitsBulk
+  description: Get Bulk Direct Debits
+  source_operation: openapi/avenue-bank-cds-banking-openapi.json#listDirectDebitsBulk
+- name: listDirectDebitsSpecificAccounts
+  description: Get Direct Debits For Specific Accounts
+  source_operation: openapi/avenue-bank-cds-banking-openapi.json#listDirectDebitsSpecificAccounts
+- name: listScheduledPayments
+  description: Get Scheduled Payments for Account
+  source_operation: openapi/avenue-bank-cds-banking-openapi.json#listScheduledPayments
+- name: listScheduledPaymentsBulk
+  description: Get Scheduled Payments Bulk
+  source_operation: openapi/avenue-bank-cds-banking-openapi.json#listScheduledPaymentsBulk
+- name: listScheduledPaymentsSpecificAccounts
+  description: Get Scheduled Payments For Specific Accounts
+  source_operation: openapi/avenue-bank-cds-banking-openapi.json#listScheduledPaymentsSpecificAccounts
+- name: listInstalmentPlans
+  description: Get Instalment Plans for Account
+  source_operation: openapi/avenue-bank-cds-banking-openapi.json#listInstalmentPlans
+- name: listInstalmentPlansBulk
+  description: Get Instalment Plans Bulk
+  source_operation: openapi/avenue-bank-cds-banking-openapi.json#listInstalmentPlansBulk
+- name: listBankingPayees
+  description: Get Payees
+  source_operation: openapi/avenue-bank-cds-banking-openapi.json#listBankingPayees
+- name: getBankingPayeeDetail
+  description: Get Payee Detail
+  source_operation: openapi/avenue-bank-cds-banking-openapi.json#getBankingPayeeDetail
+- name: listBankingProducts
+  description: Get Products
+  source_operation: openapi/avenue-bank-cds-banking-openapi.json#listBankingProducts
+- name: getBankingProductDetail
+  description: Get Product Detail
+  source_operation: openapi/avenue-bank-cds-banking-openapi.json#getBankingProductDetail

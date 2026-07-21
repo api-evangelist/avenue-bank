@@ -1,0 +1,56 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/avenue-bank-cds-banking-openapi.json
+note: Cross-cutting request/response semantics of the CDR Consumer Data Standards Banking API surface,
+  derived from the OpenAPI and the DSB standard.
+authentication:
+  ref: authentication/avenue-bank-authentication.yml
+  summary: Public PRD endpoints; CDR OAuth2/OIDC + FAPI + MTLS-bound tokens for consumer data.
+versioning:
+  style: header
+  request_headers:
+  - x-v (requested endpoint version)
+  - x-min-v (minimum acceptable version)
+  response_header: x-v (version returned)
+  standard_version: Consumer Data Standards Banking API v1.36.0
+  note: Each endpoint is independently versioned; e.g. Get Products is v4, Get Transactions is v2.
+  ref: lifecycle/avenue-bank-lifecycle.yml
+pagination:
+  style: page-number
+  request_params:
+  - page
+  - page-size
+  page_size_default: 25
+  page_size_max: 1000
+  response_meta:
+  - meta.totalRecords
+  - meta.totalPages
+  response_links:
+  - links.self
+  - links.first
+  - links.prev
+  - links.next
+  - links.last
+request_tracing:
+  header: x-fapi-interaction-id
+  note: Client-supplied interaction id echoed in the response for correlation (FAPI).
+  other_fapi_headers:
+  - x-fapi-auth-date
+  - x-fapi-customer-ip-address
+  - x-cds-client-headers
+idempotency:
+  supported: false
+  note: Read-only data surface (GET, plus POST 'For Specific Accounts' reads that change no state). No
+    Idempotency-Key contract is defined by the standard for these endpoints.
+error_envelope:
+  shape: 'ResponseErrorListV2 { errors: [ ErrorV2 { code, title, detail, meta } ] }'
+  code_format: CDR error-code URN (urn:au-cds:error:...)
+  media_type: application/json
+  ref: errors/avenue-bank-problem-types.yml
+  rfc9457: false
+rate_limiting:
+  note: The CDR standard defines traffic thresholds (TPS/session limits) for data holders; not surfaced
+    as response headers in this spec.
+date_time:
+  format: DateTimeString (RFC 3339 / ISO 8601 UTC)
+  money: AmountString / CurrencyString per CDS common field types

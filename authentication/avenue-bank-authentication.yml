@@ -1,0 +1,47 @@
+generated: '2026-07-21'
+method: searched
+source: https://consumerdatastandardsaustralia.github.io/standards/#security-profile
+docs: https://consumerdatastandardsaustralia.github.io/standards/#security-profile
+note: The harvested OpenAPI declares no securitySchemes (it is the bare shared DSB Consumer Data Standards
+  Banking API contract). Authentication is defined by the CDR (Consumer Data Right) security profile every
+  Australian ADI data holder implements, documented here against the standard. Avenue's live registered
+  data-holder status is unverified (API host returned HTTP 403 WAF on 2026-07-21).
+summary:
+  types:
+  - none
+  - oauth2
+  - openIdConnect
+  - mutualTLS
+  public_surface: Product Reference Data (Get Products, Get Product Detail) is public and unauthenticated.
+  protected_surface: All account/balance/transaction/payee/direct-debit/scheduled-payment/instalment families
+    require CDR consumer authorisation.
+  oauth2_flows:
+  - authorizationCode
+profile:
+  standard: CDR Security Profile (FAPI 1.0 Advanced profile, AU adaptation)
+  oidc: OpenID Connect with the Hybrid/Authorization Code flow; consumer authorises data sharing.
+  par: Pushed Authorization Requests (PAR) required.
+  client_auth: private_key_jwt (asymmetric).
+  token_binding: MTLS-bound (certificate-bound) access tokens; holder-of-key.
+  consent_model: Accredited Data Recipient (ADR) requests consumer consent; sharing arrangement with lifetime
+    and scopes.
+  request_headers:
+  - x-v
+  - x-min-v
+  - x-fapi-interaction-id
+  - x-fapi-auth-date
+  - x-fapi-customer-ip-address
+  - x-cds-client-headers
+schemes:
+- name: public
+  type: none
+  applies_to:
+  - listBankingProducts
+  - getBankingProductDetail
+  note: PRD endpoints require no authentication per the standard.
+- name: cdr-oauth2
+  type: oauth2
+  flow: authorizationCode
+  note: CDR ADR consumer-authorised access for all non-PRD families; scopes in scopes/avenue-bank-scopes.yml.
+  sources:
+  - openapi/avenue-bank-cds-banking-openapi.json

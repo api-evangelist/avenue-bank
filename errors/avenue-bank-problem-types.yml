@@ -1,0 +1,51 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/avenue-bank-cds-banking-openapi.json
+format: cds-urn
+note: Derived from the OpenAPI 4xx responses (all use the ResponseErrorListV2 / ErrorV2 envelope) and
+  enriched with the standardized CDR error-code URNs the Consumer Data Standards define for these codes.
+  This is NOT RFC 9457 problem+json; CDR uses its own ErrorV2 URN scheme.
+envelope:
+  schema: ResponseErrorListV2
+  item: ErrorV2
+  fields:
+  - code (URN)
+  - title
+  - detail
+  - meta
+status_codes_in_spec:
+- '200'
+- '400'
+- '404'
+- '406'
+- '422'
+problems:
+- status: 400
+  title: Invalid field / header
+  urns:
+  - urn:au-cds:error:cds-all:Field/Missing
+  - urn:au-cds:error:cds-all:Field/Invalid
+  - urn:au-cds:error:cds-all:Field/InvalidDateTime
+  - urn:au-cds:error:cds-all:Header/Missing
+  - urn:au-cds:error:cds-all:Header/Invalid
+  remediation: Correct the malformed query parameter or header and retry.
+- status: 404
+  title: Resource not found / invalid
+  urns:
+  - urn:au-cds:error:cds-all:Resource/NotFound
+  - urn:au-cds:error:cds-all:Resource/Invalid
+  - urn:au-cds:error:cds-banking:Authorisation/InvalidBankingAccount
+  - urn:au-cds:error:cds-banking:Authorisation/UnavailableBankingAccount
+  remediation: Confirm the account/transaction/payee/product id and that it is within the consented set.
+- status: 406
+  title: Unsupported / invalid version
+  urns:
+  - urn:au-cds:error:cds-all:Header/InvalidVersion
+  - urn:au-cds:error:cds-all:Header/UnsupportedVersion
+  remediation: Send a supported x-v value (and x-min-v) for the endpoint; consult the endpoint version.
+- status: 422
+  title: Unprocessable / invalid page
+  urns:
+  - urn:au-cds:error:cds-all:Field/InvalidPage
+  - urn:au-cds:error:cds-all:Field/InvalidPageSize
+  remediation: Use a valid page / page-size within the allowed range.

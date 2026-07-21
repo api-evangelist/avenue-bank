@@ -1,0 +1,70 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/avenue-bank-cds-banking-openapi.json
+note: Entity-relationship graph derived from the CDS Banking OpenAPI schemas and id-reference fields.
+entities:
+- name: Product
+  id: productId
+  operations:
+  - listBankingProducts
+  - getBankingProductDetail
+  note: Public product reference data; no consumer authorisation.
+- name: Account
+  id: accountId
+  operations:
+  - listBankingAccounts
+  - getBankingAccountDetail
+- name: Balance
+  operations:
+  - getBankingBalance
+  - listBankingBalancesBulk
+  - listBankingBalancesSpecificAccounts
+- name: Transaction
+  id: transactionId
+  operations:
+  - listBankingTransactions
+  - getBankingTransactionDetail
+- name: Payee
+  id: payeeId
+  operations:
+  - listBankingPayees
+  - getBankingPayeeDetail
+- name: DirectDebit
+  operations:
+  - listDirectDebits
+  - listDirectDebitsBulk
+  - listDirectDebitsSpecificAccounts
+- name: ScheduledPayment
+  operations:
+  - listScheduledPayments
+  - listScheduledPaymentsBulk
+  - listScheduledPaymentsSpecificAccounts
+- name: InstalmentPlan
+  operations:
+  - listInstalmentPlans
+  - listInstalmentPlansBulk
+relationships:
+- from: Account
+  to: Balance
+  type: has_one
+  via: accountId
+- from: Account
+  to: Transaction
+  type: has_many
+  via: accountId
+- from: Account
+  to: DirectDebit
+  type: has_many
+  via: accountId
+- from: Account
+  to: ScheduledPayment
+  type: has_many
+  via: accountId
+- from: Account
+  to: InstalmentPlan
+  type: has_many
+  via: accountId
+- from: ScheduledPayment
+  to: Payee
+  type: belongs_to
+  via: payeeReference

@@ -19,7 +19,19 @@ description: Avenue Bank Ltd (ABN 24 628 073 085, AFSL 520239) is an Australian
   and a probe of its API host on 2026-07-21 returned HTTP 403 (WAF) rather than a
   CDS-conformant payload, so its live CDR data-holder surface is documented here
   against the standard but recorded as unverified.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/avenue-bank.png
 tags:
 - Financial
 - Banks
@@ -35,143 +47,237 @@ created: '2026-07-20'
 modified: '2026-07-21'
 specificationVersion: '0.19'
 apis:
-- aid: avenue-bank:avenue-bank-cdr-product-reference-data-api
-  name: Avenue Bank CDR Product Reference Data API
-  tags:
-  - CDR
-  - Open Banking
-  - Product Reference Data
-  - Banking
-  - Australia
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: avenue-bank:avenue-bank-banking-account-balances-api
+  name: Avenue Bank Banking Account Balances API
+  description: Banking Account Balance endpoints
   humanURL: https://consumerdatastandardsaustralia.github.io/standards/#get-products
   baseURL: https://api.avenuebank.com.au/cds-au/v1/banking/products
-  properties:
-  - url: https://raw.githubusercontent.com/api-evangelist/avenue-bank/refs/heads/main/openapi/avenue-bank-cds-banking-openapi.json
-    type: OpenAPI
-  - url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-products
-    type: Documentation
-  - url: https://consumerdatastandardsaustralia.github.io/standards/#get-products
-    type: APIReference
-  description: 'PUBLIC / unauthenticated. The Product Reference Data (PRD) family
-    (Get Products, Get Product Detail) is the openly accessible banking-products
-    surface every active Australian ADI data holder exposes under the standard CDS
-    path /cds-au/v1/banking/products. It is defined by the shared DSB Consumer Data
-    Standards Banking API v1.36.0 (see the wired OpenAPI), not an Avenue-proprietary
-    spec. Avenue is an ADI subject to this obligation but holds a permanent ACCC
-    exemption (6 June 2025) for the term-deposit aspect of its bank guarantee
-    product; a probe of https://api.avenuebank.com.au/cds-au/v1/banking/products on
-    2026-07-21 returned HTTP 403 (WAF), so the endpoint host is real but its live
-    CDR-conformant status is recorded as unverified.'
-- aid: avenue-bank:avenue-bank-cdr-accounts-balances-api
-  name: Avenue Bank CDR Accounts & Balances API
   tags:
-  - CDR
-  - Open Banking
-  - Accounts
-  - Balances
-  - Banking
-  - Australia
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://consumerdatastandardsaustralia.github.io/standards/#get-accounts
-  baseURL: https://api.avenuebank.com.au/cds-au/v1/banking/accounts
+  - Banking Account Balances
   properties:
-  - url: https://raw.githubusercontent.com/api-evangelist/avenue-bank/refs/heads/main/openapi/avenue-bank-cds-banking-openapi.json
-    type: OpenAPI
-  - url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-accounts
-    type: Documentation
-  - url: https://consumerdatastandardsaustralia.github.io/standards/#get-accounts
-    type: APIReference
-  description: 'CONSUMER-AUTHORIZED (CDR ADR model). The Accounts & Balances family
-    (Get Accounts, Get Bulk Balances, Get Balances For Specific Accounts, Get
-    Account Balance, Get Account Detail) returns a consented consumer''s account
-    list and balances, accessible only to an Accredited Data Recipient after the
-    customer authorises sharing. These are standardized DSB Consumer Data Standards
-    Banking API v1.36.0 endpoints under /cds-au/v1/banking/accounts (see the wired
-    OpenAPI), not Avenue-proprietary endpoints. Avenue is an ADI subject to this
-    surface; its live registered data-holder status is unverified (products host
-    returned HTTP 403 WAF on 2026-07-21).'
-- aid: avenue-bank:avenue-bank-cdr-transactions-api
-  name: Avenue Bank CDR Transactions API
+  - type: OpenAPI
+    url: openapi/avenue-bank-banking-account-balances-api-openapi.yml
+  - type: Documentation
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-products
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-products
+  - type: Documentation
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-accounts
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-accounts
+  - type: Documentation
+    url: >-
+      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-transactions-for-account
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-transactions-for-account
+  - type: Documentation
+    url: >-
+      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-direct-debits-for-account
+  - type: APIReference
+    url: >-
+      https://consumerdatastandardsaustralia.github.io/standards/#get-direct-debits-for-account
+  - type: Documentation
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-payees
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-payees
+- aid: avenue-bank:avenue-bank-banking-account-direct-debits-api
+  name: Avenue Bank Banking Account Direct Debits API
+  description: Banking Account Direct Debit endpoints
+  humanURL: https://consumerdatastandardsaustralia.github.io/standards/#get-products
+  baseURL: https://api.avenuebank.com.au/cds-au/v1/banking/products
   tags:
-  - CDR
-  - Open Banking
-  - Transactions
-  - Banking
-  - Australia
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://consumerdatastandardsaustralia.github.io/standards/#get-transactions-for-account
-  baseURL: https://api.avenuebank.com.au/cds-au/v1/banking/accounts/{accountId}/transactions
+  - Banking Account Direct Debits
   properties:
-  - url: https://raw.githubusercontent.com/api-evangelist/avenue-bank/refs/heads/main/openapi/avenue-bank-cds-banking-openapi.json
-    type: OpenAPI
-  - url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-transactions-for-account
-    type: Documentation
-  - url: https://consumerdatastandardsaustralia.github.io/standards/#get-transactions-for-account
-    type: APIReference
-  description: 'CONSUMER-AUTHORIZED (CDR ADR model). The Transactions family (Get
-    Transactions For Account, Get Transaction Detail) returns a consented
-    consumer''s transaction history and detail, available only to an Accredited
-    Data Recipient after customer authorisation. These are standardized DSB Consumer
-    Data Standards Banking API v1.36.0 endpoints under
-    /cds-au/v1/banking/accounts/{accountId}/transactions (see the wired OpenAPI),
-    not Avenue-proprietary. Avenue is an ADI subject to this surface; live status
-    unverified (products host returned HTTP 403 WAF on 2026-07-21).'
-- aid: avenue-bank:avenue-bank-cdr-direct-debits-scheduled-payments-api
-  name: Avenue Bank CDR Direct Debits & Scheduled Payments API
+  - type: OpenAPI
+    url: openapi/avenue-bank-banking-account-direct-debits-api-openapi.yml
+  - type: Documentation
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-products
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-products
+  - type: Documentation
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-accounts
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-accounts
+  - type: Documentation
+    url: >-
+      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-transactions-for-account
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-transactions-for-account
+  - type: Documentation
+    url: >-
+      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-direct-debits-for-account
+  - type: APIReference
+    url: >-
+      https://consumerdatastandardsaustralia.github.io/standards/#get-direct-debits-for-account
+  - type: Documentation
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-payees
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-payees
+- aid: avenue-bank:avenue-bank-banking-account-scheduled-payments-api
+  name: Avenue Bank Banking Account Scheduled Payments API
+  description: Banking Account Scheduled Payment endpoints
+  humanURL: https://consumerdatastandardsaustralia.github.io/standards/#get-products
+  baseURL: https://api.avenuebank.com.au/cds-au/v1/banking/products
   tags:
-  - CDR
-  - Open Banking
-  - Direct Debits
-  - Scheduled Payments
-  - Banking
-  - Australia
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://consumerdatastandardsaustralia.github.io/standards/#get-direct-debits-for-account
-  baseURL: https://api.avenuebank.com.au/cds-au/v1/banking/accounts/direct-debits
+  - Banking Account Scheduled Payments
   properties:
-  - url: https://raw.githubusercontent.com/api-evangelist/avenue-bank/refs/heads/main/openapi/avenue-bank-cds-banking-openapi.json
-    type: OpenAPI
-  - url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-direct-debits-for-account
-    type: Documentation
-  - url: https://consumerdatastandardsaustralia.github.io/standards/#get-direct-debits-for-account
-    type: APIReference
-  description: 'CONSUMER-AUTHORIZED (CDR ADR model). This family covers the DSB
-    Banking API''s recurring-payment surface: Get Direct Debits For Account, Get
-    Bulk Direct Debits, Get Direct Debits For Specific Accounts, plus Get Scheduled
-    Payments For Account / Bulk / Specific Accounts and the Get Instalment Plans
-    endpoints. It returns a consented consumer''s direct-debit authorisations and
-    scheduled/instalment payments to an Accredited Data Recipient after
-    authorisation. Standardized DSB Consumer Data Standards Banking API v1.36.0
-    endpoints under /cds-au/v1/banking/accounts/direct-debits and
-    /cds-au/v1/banking/payments/scheduled (see the wired OpenAPI), not
-    Avenue-proprietary. Avenue is an ADI subject to this surface; live status
-    unverified (products host returned HTTP 403 WAF on 2026-07-21).'
-- aid: avenue-bank:avenue-bank-cdr-payees-api
-  name: Avenue Bank CDR Payees API
+  - type: OpenAPI
+    url: openapi/avenue-bank-banking-account-scheduled-payments-api-openapi.yml
+  - type: Documentation
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-products
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-products
+  - type: Documentation
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-accounts
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-accounts
+  - type: Documentation
+    url: >-
+      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-transactions-for-account
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-transactions-for-account
+  - type: Documentation
+    url: >-
+      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-direct-debits-for-account
+  - type: APIReference
+    url: >-
+      https://consumerdatastandardsaustralia.github.io/standards/#get-direct-debits-for-account
+  - type: Documentation
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-payees
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-payees
+- aid: avenue-bank:avenue-bank-banking-account-transactions-api
+  name: Avenue Bank Banking Account Transactions API
+  description: Banking Account Transaction endpoints
+  humanURL: https://consumerdatastandardsaustralia.github.io/standards/#get-products
+  baseURL: https://api.avenuebank.com.au/cds-au/v1/banking/products
   tags:
-  - CDR
-  - Open Banking
-  - Payees
-  - Banking
-  - Australia
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://consumerdatastandardsaustralia.github.io/standards/#get-payees
-  baseURL: https://api.avenuebank.com.au/cds-au/v1/banking/payees
+  - Banking Account Transactions
   properties:
-  - url: https://raw.githubusercontent.com/api-evangelist/avenue-bank/refs/heads/main/openapi/avenue-bank-cds-banking-openapi.json
-    type: OpenAPI
-  - url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-payees
-    type: Documentation
-  - url: https://consumerdatastandardsaustralia.github.io/standards/#get-payees
-    type: APIReference
-  description: 'CONSUMER-AUTHORIZED (CDR ADR model). The Payees family (Get Payees,
-    Get Payee Detail) returns a consented consumer''s saved payees, available only
-    to an Accredited Data Recipient after customer authorisation. These are
-    standardized DSB Consumer Data Standards Banking API v1.36.0 endpoints under
-    /cds-au/v1/banking/payees (see the wired OpenAPI), not Avenue-proprietary.
-    Avenue is an ADI subject to this surface; live registered data-holder status is
-    unverified (products host returned HTTP 403 WAF on 2026-07-21).'
+  - type: OpenAPI
+    url: openapi/avenue-bank-banking-account-transactions-api-openapi.yml
+  - type: Documentation
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-products
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-products
+  - type: Documentation
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-accounts
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-accounts
+  - type: Documentation
+    url: >-
+      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-transactions-for-account
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-transactions-for-account
+  - type: Documentation
+    url: >-
+      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-direct-debits-for-account
+  - type: APIReference
+    url: >-
+      https://consumerdatastandardsaustralia.github.io/standards/#get-direct-debits-for-account
+  - type: Documentation
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-payees
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-payees
+- aid: avenue-bank:avenue-bank-banking-accounts-api
+  name: Avenue Bank Banking Accounts API
+  description: Banking Account endpoints
+  humanURL: https://consumerdatastandardsaustralia.github.io/standards/#get-products
+  baseURL: https://api.avenuebank.com.au/cds-au/v1/banking/products
+  tags:
+  - Banking Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/avenue-bank-banking-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-products
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-products
+  - type: Documentation
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-accounts
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-accounts
+  - type: Documentation
+    url: >-
+      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-transactions-for-account
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-transactions-for-account
+  - type: Documentation
+    url: >-
+      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-direct-debits-for-account
+  - type: APIReference
+    url: >-
+      https://consumerdatastandardsaustralia.github.io/standards/#get-direct-debits-for-account
+  - type: Documentation
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-payees
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-payees
+- aid: avenue-bank:avenue-bank-banking-payees-api
+  name: Avenue Bank Banking Payees API
+  description: Banking Payee endpoints
+  humanURL: https://consumerdatastandardsaustralia.github.io/standards/#get-products
+  baseURL: https://api.avenuebank.com.au/cds-au/v1/banking/products
+  tags:
+  - Banking Payees
+  properties:
+  - type: OpenAPI
+    url: openapi/avenue-bank-banking-payees-api-openapi.yml
+  - type: Documentation
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-products
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-products
+  - type: Documentation
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-accounts
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-accounts
+  - type: Documentation
+    url: >-
+      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-transactions-for-account
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-transactions-for-account
+  - type: Documentation
+    url: >-
+      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-direct-debits-for-account
+  - type: APIReference
+    url: >-
+      https://consumerdatastandardsaustralia.github.io/standards/#get-direct-debits-for-account
+  - type: Documentation
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-payees
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-payees
+- aid: avenue-bank:avenue-bank-banking-products-api
+  name: Avenue Bank Banking Products API
+  description: Banking Product endpoints
+  humanURL: https://consumerdatastandardsaustralia.github.io/standards/#get-products
+  baseURL: https://api.avenuebank.com.au/cds-au/v1/banking/products
+  tags:
+  - Banking Products
+  properties:
+  - type: OpenAPI
+    url: openapi/avenue-bank-banking-products-api-openapi.yml
+  - type: Documentation
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-products
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-products
+  - type: Documentation
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-accounts
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-accounts
+  - type: Documentation
+    url: >-
+      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-transactions-for-account
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-transactions-for-account
+  - type: Documentation
+    url: >-
+      https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-direct-debits-for-account
+  - type: APIReference
+    url: >-
+      https://consumerdatastandardsaustralia.github.io/standards/#get-direct-debits-for-account
+  - type: Documentation
+    url: https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-payees
+  - type: APIReference
+    url: https://consumerdatastandardsaustralia.github.io/standards/#get-payees
 common:
 - type: AgenticAccess
   url: agentic-access/avenue-bank-agentic-access.yml

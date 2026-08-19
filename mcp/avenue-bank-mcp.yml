@@ -66,3 +66,9 @@ tools:
 - name: getBankingProductDetail
   description: Get Product Detail
   source_operation: openapi/avenue-bank-cds-banking-openapi.json#getBankingProductDetail
+deployment:
+  mode: none
+  verified: derived
+  tools: 19
+  checked: '2026-08-12'
+  source: catalog MCP census

@@ -19,6 +19,18 @@ description: Avenue Bank Ltd (ABN 24 628 073 085, AFSL 520239) is an Australian
   and a probe of its API host on 2026-07-21 returned HTTP 403 (WAF) rather than a
   CDS-conformant payload, so its live CDR data-holder surface is documented here
   against the standard but recorded as unverified.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve

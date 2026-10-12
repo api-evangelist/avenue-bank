@@ -1,0 +1,16 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/avenue-bank/integrations
+- https://n8n.io/integrations/avenue-bank/
+- https://composio.dev/toolkits/avenue-bank
+- https://monid.ai/tools/avenue-bank
+checked:
+- https://composio.dev/toolkits/avenue-bank
+- https://monid.ai/tools/avenue-bank
+- https://n8n.io/integrations/avenue-bank/
+- https://zapier.com/apps/avenue-bank/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []

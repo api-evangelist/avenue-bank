@@ -1,5 +1,5 @@
 generated: '2026-10-12'
-method: none
+method: searched
 source:
 - https://zapier.com/apps/avenue-bank/integrations
 - https://n8n.io/integrations/avenue-bank/
@@ -10,7 +10,79 @@ checked:
 - https://monid.ai/tools/avenue-bank
 - https://n8n.io/integrations/avenue-bank/
 - https://zapier.com/apps/avenue-bank/integrations
+- https://data.gov.au/data/dataset/asic-afs-licensee
+- https://data.gov.au/data/dataset/asic-credit-licensee
+- https://www.apra.gov.au/register-of-authorised-deposit-taking-institutions
+- https://www.apra.gov.au/registers/list-registered-general-insurers
 summary: null
 marketplace_apps: []
-edges: []
+edges:
+- partner_name: APRA authorised deposit-taking institutions
+  partner: null
+  partner_match: register
+  type: register
+  channel: regulator-register
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.apra.gov.au/register-of-authorised-deposit-taking-institutions
+  category: Australian authorised deposit-taking institution (APRA)
+  contract_reference:
+    register: APRA authorised deposit-taking institutions
+    spec_file: null
+    standard: null
+    role: authorised-deposit-taking-institution
+    registrations:
+    - registered_name: Avenue Bank Limited
+      licences:
+      - Australian-owned authorised deposit-taking institutions
+      register_country: AU
+      matched_domain: avenuebank.com.au
+      matched_by: domain
+      section: Australian-owned authorised deposit-taking institutions
+      identity: wikidata Q139717831 'Avenue Bank' P856 https://www.avenuebank.com.au/
+    signal_note: 'participation only: a regulator licence / authorisation listing; no API conformance is published
+      by this register'
+    detected_by: sweep-australia-afs-adi-registers.py
+    detected: '2026-10-22'
+    identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+  detected_by: sweep-australia-afs-adi-registers.py
+  first_seen: '2026-10-22'
+- partner_name: ASIC Australian Financial Services licensees
+  partner: null
+  partner_match: register-name
+  type: register
+  channel: regulator-register
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://data.gov.au/data/dataset/ab7eddce-84df-4098-bc8f-500d0d9776d1/resource/d98a113d-6b50-40e6-b65f-2612efc877f4/download/afs_lic_202610.csv
+  category: Australian financial services licence (ASIC)
+  contract_reference:
+    register: ASIC Australian Financial Services licensees
+    spec_file: null
+    standard: null
+    role: afs-licensee
+    registrations:
+    - registered_name: AVENUE BANK LTD
+      licences:
+      - AFS licence
+      - deposit and payment products
+      register_country: AU
+      matched_domain: null
+      matched_by: register-name
+      register_id: AFSL 520239
+      abn_acn: '24628073085'
+      state: NSW
+      start: 07/09/2021
+      register_name_note: 'register-name ''avenuebank'' = avenue-bank; no wikidata P856; AU presence: Australia
+        tag'
+    signal_note: 'participation only: a regulator licence / authorisation listing; no API conformance is published
+      by this register'
+    detected_by: sweep-australia-afs-adi-registers.py
+    detected: '2026-10-22'
+    matched_by: register-name
+    identity_source: register-name
+    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata
+      P856 not contradicting (Kin 2026-10-20 decision 2)
+  detected_by: sweep-australia-afs-adi-registers.py
+  first_seen: '2026-10-22'
 templates: []

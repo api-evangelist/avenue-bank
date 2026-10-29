@@ -1,4 +1,4 @@
-# Avenue Bank (avenue-bank)
+# Avenue Bank
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,60 +64,131 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Avenue Bank Ltd (ABN 24 628 073 085, AFSL 520239) is an Australian Authorised Deposit-taking Institution (ADI) regulated by APRA, holding a full (unrestricted) banking licence granted in 2024 after operating as a Restricted ADI from 2021. Founded by Dale Hurley and Colin Porter (co-founders of CreditorWatch) and majority-backed by Sherman Ma's Liberty Financial Group, Avenue is a digital business bank that is the first and only Australian bank specialising exclusively in bank guarantees for SMEs, alongside term deposits.
+Avenue Bank Ltd (ABN 24 628 073 085, AFSL 520239) is an Australian Authorised Deposit-taking Institution (ADI) regulated by APRA, holding a full (unrestricted) banking licence granted in 2024 after operating as a Restricted ADI from 2021. Founded by Dale Hurley and Colin Porter (co-founders of CreditorWatch) and majority-backed by Sherman Ma's Liberty Financial Group as its largest strategic shareholder, Avenue is a digital business bank that is the first and only Australian bank specialising exclusively in bank guarantees for SMEs, alongside term deposits. As an ADI, Avenue is a designated data holder class under Australia's Consumer Data Right (CDR / Open Banking) and is therefore subject to the shared Data Standards Body (DSB) Consumer Data Standards Banking API surface (Get Products through Get Payees) that every ADI data holder implements verbatim under the /cds-au/v1 path. Avenue holds a permanent ACCC exemption (granted 6 June 2025, s56GD) covering the term-deposit aspect of its bank guarantee product, publishes no first-party developer portal, and a probe of its API host on 2026-07-21 returned HTTP 403 (WAF) rather than a CDS-conformant payload, so its live CDR data-holder surface is documented here against the standard but recorded as unverified.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/avenue-bank/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/avenue-bank/refs/heads/main/apis.yml)
+**Areas:** Finance · Banks · Open Banking · CDR · Consumer Data Right · Consumer Banking · Business Banking · Bank Guarantees · Australia · ADI
 
-## Tags
+## Avenue Bank on APIs.io
 
-- Financial
-- Banks
-- Open Banking
-- CDR
-- Consumer Data Right
-- Consumer Banking
-- Business Banking
-- Bank Guarantees
-- Australia
-- ADI
+Everything profiled for Avenue Bank is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/avenue-bank/](https://apis.io/providers/avenue-bank/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (7)
 
-- **Created:** 2026-07-20
-- **Modified:** 2026-07-20
+- [Avenue Bank Banking Account Balances API](https://apis.io/apis/avenue-bank/avenue-bank-banking-account-balances-api/) — Banking Account Balance endpoints
+- [Avenue Bank Banking Account Direct Debits API](https://apis.io/apis/avenue-bank/avenue-bank-banking-account-direct-debits-api/) — Banking Account Direct Debit endpoints
+- [Avenue Bank Banking Account Scheduled Payments API](https://apis.io/apis/avenue-bank/avenue-bank-banking-account-scheduled-payments-api/) — Banking Account Scheduled Payment endpoints
+- [Avenue Bank Banking Account Transactions API](https://apis.io/apis/avenue-bank/avenue-bank-banking-account-transactions-api/) — Banking Account Transaction endpoints
+- [Avenue Bank Banking Accounts API](https://apis.io/apis/avenue-bank/avenue-bank-banking-accounts-api/) — Banking Account endpoints
+- [Avenue Bank Banking Payees API](https://apis.io/apis/avenue-bank/avenue-bank-banking-payees-api/) — Banking Payee endpoints
+- [Avenue Bank Banking Products API](https://apis.io/apis/avenue-bank/avenue-bank-banking-products-api/) — Banking Product endpoints
 
-## APIs
+### Published properties
 
-### Avenue Bank CDR Product Reference Data API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-UNVERIFIED. Under Australia's Consumer Data Right (CDR / Open Banking), every active ADI data holder must expose a public, unauthenticated Product Reference Data (PRD) API at the standard Consumer Data Standards (CDS) path `/cds-au/v1/banking/products`. Avenue Bank is an ADI, but as of 2026-07-20 it is not listed in the CDR Register's banking data-holder brands, and a probe of its API host returned HTTP 403 Forbidden (a WAF response, not a CDS-conformant JSON payload with a `data.products` array and `x-v` header). The base URL below is the standard CDS path on Avenue's real API host, recorded as unverified rather than a confirmed live endpoint.
+#### MCP servers (1)
 
-- **Human URL:** [https://consumerdatastandardsaustralia.github.io/standards/#get-products](https://consumerdatastandardsaustralia.github.io/standards/#get-products)
-- **Base URL:** `https://api.avenuebank.com.au/cds-au/v1/banking/products` (unverified — HTTP 403, not in CDR Register)
+Model Context Protocol servers that expose the API to agents.
 
-#### Tags
+- [avenue-bank](https://apis.io/servers/avenue-bank/avenue-bank/)
 
-- CDR
-- Open Banking
-- Product Reference Data
-- Banking
-- Australia
+#### Agentic access (1)
 
-#### Properties
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- [Documentation](https://consumerdatastandardsaustralia.github.io/standards/#cdr-banking-api_get-products)
-- [API Reference](https://consumerdatastandardsaustralia.github.io/standards/#get-products)
+- [Avenue Bank Agentic Access](https://apis.io/agentic-access/avenue-bank/avenue-bank-agentic-access/)
 
-## Common Properties
+#### Collections (7)
+
+Postman and Open Collection request collections.
+
+- [CDR Banking Banking Account Balances API](https://apis.io/collections/avenue-bank/open-avenue-bank-banking-account-balances-api/)
+- [CDR Banking Banking Account Balances Banking Account Direct Debits API](https://apis.io/collections/avenue-bank/open-avenue-bank-banking-account-direct-debits-api/)
+- [CDR Banking Banking Account Balances Banking Account Scheduled Payments API](https://apis.io/collections/avenue-bank/open-avenue-bank-banking-account-scheduled-payments-api/)
+- [CDR Banking Banking Account Balances Banking Account Transactions API](https://apis.io/collections/avenue-bank/open-avenue-bank-banking-account-transactions-api/)
+- [CDR Banking Banking Account Balances Banking Accounts API](https://apis.io/collections/avenue-bank/open-avenue-bank-banking-accounts-api/)
+- [CDR Banking Banking Account Balances Banking Payees API](https://apis.io/collections/avenue-bank/open-avenue-bank-banking-payees-api/)
+- [CDR Banking Banking Account Balances Banking Products API](https://apis.io/collections/avenue-bank/open-avenue-bank-banking-products-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Avenue Bank Cds Banking Overlay](https://apis.io/overlays/avenue-bank/avenue-bank-cds-banking-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Avenue Bank Authentication](https://apis.io/security/avenue-bank/avenue-bank-authentication/)
+- [Avenue Bank Domain Security](https://apis.io/security/avenue-bank/avenue-bank-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Avenue Bank Scopes](https://apis.io/scopes/avenue-bank/avenue-bank-scopes/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.avenuebank.com.au/)
-- [Blog](https://www.avenuebank.com.au/news/)
+- [Sign up](https://application.avenuebank.com.au)
 - [Support](https://www.avenuebank.com.au/help/)
-- [Privacy Policy](https://www.avenuebank.com.au/privacy)
-- [Terms of Service](https://www.avenuebank.com.au/legal/)
-- [LinkedIn](https://au.linkedin.com/company/avenuebank)
+- [Blog](https://www.avenuebank.com.au/news/)
+- [Terms of service](https://www.avenuebank.com.au/legal/)
+- [Privacy policy](https://www.avenuebank.com.au/privacy)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 18.9** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 12.4 |
+| Contract governance | 4.5 |
+| Operational transparency | 0.0 |
+| Developer ergonomics | 30.4 |
+| Access clarity | 0.0 |
+
+**Agent readiness 29.3** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | yes |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 37.8** — Banking & Open Finance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/avenue-bank/](https://apis.io/providers/avenue-bank/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Avenue Bank: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/avenue-bank/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
